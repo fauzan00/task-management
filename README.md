@@ -1,61 +1,220 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# TaskFlow - Laravel Task Management System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A exercise laravel task management solution built with Laravel that helps users organize tasks within collaborative workspaces.
 
-## About Laravel
+## Table of Contents
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+-   [Features](#features)
+-   [Installation](#installation)
+-   [Project Structure](#project-structure)
+-   [Database Schema](#database-schema)
+<!-- - [API Reference](#api-reference) -->
+-   [Development](#development)
+    <!-- - [Testing](#testing) -->
+    <!-- - [License](#license) -->
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Features ✨
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### User Management
 
-## Learning Laravel
+-   🔐 Secure authentication (register/login/logout) ✅
+-   👤 User profiles with usernames ✅
+-   🔄 Session management ✅
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Workspace System
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+-   🏢 Create multiple workspaces ✅
+-   👥 Organize tasks by projects/teams ❌
+-   🔒 Role-based access control ❌
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Task Management
 
-## Laravel Sponsors
+-   📁 Create/update/delete tasks ⭕
+-   ⏰ Set deadlines and reminders
+-   📌 Mark tasks as complete ✅
+-   🔍 Filter and search functionality ❌
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Technical Stack
 
-### Premium Partners
+-   **Backend**: Laravel 12
+-   **Frontend**: Tailwind CSS
+-   **Database**: MySQL
+-   **Auth**: Laravel Breeze
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## Installation 🚀
 
-## Contributing
+### Prerequisites
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+-   PHP 8.2+
+-   Composer 2.0+
+-   Node.js 16+
+-   MySQL
 
-## Code of Conduct
+### Step-by-Step Setup
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+1. **Clone the repository**
+    ```bash
+    git clone https://github.com/fauzan00/task-management.git
+    cd task-management
+    ```
+2. **Install dependencies:**
+    ```bash
+    composer install
+    npm install
+    ```
+3. **Environment setup:**
+    ```bash
+    cp .env.example .env
+    php artisan key:generate
+    ```
+4. **Database setup:**
+    ```bash
+    php artisan migrate
+    ```
+5. **Build assets:**
+    ```bash
+    npm run build
+    ```
 
-## Security Vulnerabilities
+## Project Structure
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+app/
+├── Http/Controllers/
+│ ├── DashboardController.php
+│ ├── TaskController.php
+│ └── WorkspaceController.php
+├── Models/
+│ ├── Task.php
+│ ├── User.php
+│ └── Workspace.php
+└── Policies/
+├── TaskPolicy.php
+└── WorkspacePolicy.php
 
-## License
+database/migrations/
+├── create_workspaces_table.php
+├── create_tasks_table.php
+└── add_username_to_users_table.php
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+resources/views/
+├── auth/
+├── tasks/
+├── workspaces/
+└── dashboard.blade.php
+```
+
+## Database Schema
+
+![model](/public/image/model.png)
+
+## Development
+
+#### Create new Laravel project
+
+```bash
+laravel new LaravelTest
+cd LaravelTest
+```
+
+#### Install frontend dependencies and build assets
+
+```bash
+npm install
+npm run build
+```
+
+#### Install Laravel Breeze for authentication
+
+```bash
+composer require laravel/breeze --dev
+php artisan breeze:install
+npm install
+npm run dev
+```
+
+#### Run initial migrations
+
+```bash
+php artisan migrate
+```
+
+#### Create models with migrations
+
+```bash
+php artisan make:model Workspace -m
+php artisan make:model Task -m
+```
+
+#### Run migrations for new models
+
+```bash
+php artisan migrate
+```
+
+#### Create controllers
+
+```bash
+php artisan make:controller WorkspaceController --resource --model=Workspace
+php artisan make:controller TaskController --resource --model=Task
+php artisan make:controller DashboardController --resource
+```
+
+#### Create policies
+
+```bash
+php artisan make:policy WorkspacePolicy --model=Workspace
+php artisan make:policy TaskPolicy --model=Task
+```
+
+#### Add username field to users table
+
+```bash
+php artisan make:migration add_username_to_users_table --table=users
+php artisan migrate
+```
+
+#### Clear cached views
+
+```bash
+php artisan view:clear
+```
+
+#### Check migration status
+
+```bash
+php artisan migrate:status
+```
+
+#### Open project in VS Code
+
+```bash
+code .
+```
+
+# Picture Project
+
+1. **Front page:**
+   ![front-page](/public/image/front-page.png)
+
+2. **Login:**
+   ![Login](/public/image/login-user.png)
+
+3. **Register:**
+   ![Register](/public/image/register-user.png)
+
+4. **profile:**
+   ![profile1](/public/image/profile1.png)
+   ![profile2](/public/image/profile2.png)
+
+5. **Dashboard:**
+   ![Dashboard](/public/image/dashboard.png)
+
+6. **Workspace:**
+   ![Workspace1](/public/image/workspace1.png)
+   ![Workspace2](/public/image/workspace2.png)
+
+7. **Task:**
+   ![Task1](/public/image/task1.png)
+   ![Task2](/public/image/task2.png)
+   ![Task3](/public/image/task3.png)
