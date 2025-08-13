@@ -8,10 +8,10 @@ A exercise laravel task management solution built with Laravel that helps users 
 -   [Installation](#installation)
 -   [Project Structure](#project-structure)
 -   [Database Schema](#database-schema)
-<!-- - [API Reference](#api-reference) -->
 -   [Development](#development)
-    <!-- - [Testing](#testing) -->
-    <!-- - [License](#license) -->
+    <!-- - [API Reference](#api-reference) -->
+        <!-- - [Testing](#testing) -->
+        <!-- - [License](#license) -->
 
 ## Features ✨
 
@@ -30,7 +30,7 @@ A exercise laravel task management solution built with Laravel that helps users 
 ### Task Management
 
 -   📁 Create/update/delete tasks ⭕
--   ⏰ Set deadlines and reminders
+-   ⏰ Set deadlines and reminders ❌
 -   📌 Mark tasks as complete ✅
 -   🔍 Filter and search functionality ❌
 
